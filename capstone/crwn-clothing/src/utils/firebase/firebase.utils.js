@@ -29,6 +29,10 @@ export const createUserDocumentFromAuth = async (
   userAuth,
   additionalInformation = {}
 ) => {
+  if(!userAuth) {
+    console.log('userAuth missing');
+    return;
+  }
   const userDocRef = doc(db, "users", userAuth.uid);
   console.log(userDocRef);
 
@@ -57,7 +61,8 @@ export const createUserDocumentFromAuth = async (
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) {
+    console.log('missing email / password');
     return;
   }
-  createUserWithEmailAndPassword(auth, email, password);
+  return await createUserWithEmailAndPassword(auth, email, password);
 };
