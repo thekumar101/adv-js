@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { useState } from "react";
 import {
   createAuthUserWithEmailAndPassword,
@@ -7,6 +6,7 @@ import {
 import FormInput from "../form-input/form-input.component";
 import './sign-up.styles.scss';
 import Button from "../button/button.component";
+
 const defaultFormFields = {
   displayName: "",
   email: "",
@@ -24,6 +24,7 @@ const SignUp = () => {
   const resetFormFileds = () => {
     setFormFields(defaultFormFields);
   };
+
   const handleSubmit = async (evt) => {
     evt.preventDefault();
 
@@ -36,8 +37,7 @@ const SignUp = () => {
         email,
         password
       );
-      console.log(user);
-
+      
       const createUserDoc = await createUserDocumentFromAuth(user, {
         displayName,
       });
